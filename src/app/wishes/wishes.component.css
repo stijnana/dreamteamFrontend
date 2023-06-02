@@ -1,0 +1,94 @@
+button {
+  float: right;
+}
+
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#deleteButton {
+  color: white !important;
+  background-color: #E30021;
+}
+
+#editButton{
+  color: white !important;
+  background-color: #0070ad;
+}
+
+.inputForm {
+  /*margin-right: 10px;*/
+}
+
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.form-block{
+  background-color: white;
+}
+
+/*buttons*/
+section {
+  display: table;
+}
+
+.grid-6{
+  display: grid;
+  width: inherit;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.add-button{
+  margin-left: 20px;
+  background: #0070ad;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
+
+table {
+  width: -webkit-fill-available;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.inputForm{
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+.topInput{
+  padding-top: 20px;
+}
+
+.add-button{
+  margin-left: 20px;
+  background: #0070ad;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  color: white;
+}
+
+#save-button{
+  color: white !important;
+  background-color: #0070ad;
+  margin: -10px 20px 20px;
+}
+
+.tableTextPadding{
+  padding: 10px;
+}

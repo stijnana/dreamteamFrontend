@@ -1,0 +1,81 @@
+<ng-container>
+  <mat-toolbar class="header">
+    <img src="assets/tumbLogo2.png" class="logo">
+    <p style="color: black">Dreamteam</p>
+    <img src="assets/swoosh.png" class="swoesh">
+    <button mat-button class="corpId">{{GlobalComponent.CorpId}}</button>
+
+  </mat-toolbar>
+  <mat-sidenav-container class="container">
+    <mat-sidenav
+      #sidenav
+      mode="side"
+      opened
+      class="sidenav"
+      [fixedInViewport]=" true"
+      [fixedTopGap]=60
+      [fixedBottomGap]=""
+    >
+      <mat-nav-list>
+        <mat-list-item routerLink="">
+          <mat-icon class="icon">home</mat-icon>
+          <span>Home</span>
+        </mat-list-item>
+        <mat-expansion-panel [class.mat-elevation-z0]="true">
+          <mat-expansion-panel-header>
+            <span class="leerplan">Leerplan</span>
+          </mat-expansion-panel-header>
+          <mat-nav-list>
+            <a mat-list-item routerLink="interests" >
+              <mat-icon class="icon">bookmark_border</mat-icon>
+              <span class="Interesses">Interesses</span>
+            </a>
+            <a mat-list-item routerLink="courses">
+              <mat-icon class="icon">book</mat-icon>
+              <span class="courses">Cursussen</span>
+            </a>
+            <a mat-list-item routerLink="learningroutes">
+              <mat-icon class="icon">route</mat-icon>
+              <span>Leer routes</span>
+            </a>
+          </mat-nav-list>
+        </mat-expansion-panel>
+        <mat-expansion-panel [class.mat-elevation-z0]="true">
+          <mat-expansion-panel-header>
+            Mijn opdrachten
+          </mat-expansion-panel-header>
+          <mat-nav-list>
+            <a mat-list-item routerLink="wishes">
+              <mat-icon class="icon">star</mat-icon>
+              <span>Wensen</span>
+            </a>
+<!--            <a mat-list-item routerLink="">-->
+<!--              <mat-icon class="icon">border_color</mat-icon>-->
+<!--              <span>Opdrachten</span>-->
+<!--            </a>-->
+          </mat-nav-list>
+        </mat-expansion-panel>
+        <mat-expansion-panel [class.mat-elevation-z0]="true">
+          <mat-expansion-panel-header>
+            Admin paneel
+          </mat-expansion-panel-header>
+          <mat-nav-list>
+            <a mat-list-item routerLink="categories">
+              <mat-icon class="icon">category</mat-icon>
+              <span>Categorieën</span>
+            </a>
+            <a mat-list-item routerLink="learningroutes-control">
+              <mat-icon></mat-icon>
+              <span>Leerroutes beheer</span>
+            </a>
+          </mat-nav-list>
+        </mat-expansion-panel>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</ng-container>
+
+

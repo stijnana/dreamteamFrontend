@@ -1,0 +1,27 @@
+
+
+.header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+
+
+.limitTextHeigt {
+  height: 100px;
+  overflow: hidden;
+  width: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+}
+
+button{
+  color: white !important;
+  background-color: #0070ad !important;
+}
+
+.setHeight{
+  min-height: 100px;
+}
+

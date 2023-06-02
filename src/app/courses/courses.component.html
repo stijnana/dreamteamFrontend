@@ -1,0 +1,20 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <button id="categoryCourse" mat-button [matMenuTriggerFor]="menu">Categorieën</button>
+    <mat-menu #menu="matMenu">
+      <button id="filter{{data.category}}" (click)="filterClick(data.category)" *ngFor="let data of categories"
+              mat-menu-item>{{data.category}}</button>
+
+    </mat-menu>
+    <button id="filterOnIntrest" (click)="filterOnIntrests()" mat-button>Mijn Intresses</button>
+    <button id="resetFilers" (click)="getCategories()" mat-button>Reset filters</button>
+
+  </mat-toolbar-row>
+</mat-toolbar>
+<div class="cardWrapper">
+  <ng-container *ngFor="let data of course">
+    <app-read-more-card class="card" *ngIf="filteredCategory.includes(data.category)"
+                        [data]="data"></app-read-more-card>
+  </ng-container>
+</div>
+<!--*ngFor="let data of getDataCourse()"-->

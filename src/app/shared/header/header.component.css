@@ -1,0 +1,75 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.logo{
+  width: 220px;
+}
+
+.swoesh{
+  width: 502px;
+  rotate: 25deg;
+}
+
+mat-toolbar{
+  background-color: #0070ad;
+  color: white;
+}
+
+button{
+  border: white;
+}
+
+
+.container {
+  position: absolute;
+  top: 60px;
+  bottom: 60px;
+  left: 0;
+  right: 0;
+}
+
+.sidenav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  background: white;
+}
+
+.header{
+  background-color: white;
+  /*border-top: #2B0A3D;*/
+  border-bottom: #0070ad;
+  border-bottom-width: 6px;
+  /*border-top-width: 3px;*/
+  /*border-top-style: solid;*/
+  border-bottom-style: solid;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+mat-sidenav-content{
+  background-color: #f1f1f1;
+  /*padding: 20px;*/
+}
+
+.icon{
+  margin-bottom: -6px;
+  margin-right: 5px;
+}
+
+.headerBanner{
+  background-image: url("../../../assets/tumbLogo2.png");
+}
+
+.corpId{
+  margin-left: auto;
+  color: black !important;
+}
+

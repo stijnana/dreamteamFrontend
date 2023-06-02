@@ -1,5 +1,12 @@
-import { Component } from '@angular/core';
+import {Component, NgModule} from '@angular/core';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
+@NgModule ({
+  imports: [
+    MatSlideToggleModule,
+  ]
+})
+class AppModule {}
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

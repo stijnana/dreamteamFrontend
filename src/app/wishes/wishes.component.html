@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="grid-6">
+    <table mat-table [dataSource]="wishes">
+      <ng-container matColumnDef="id-column">
+        <th mat-header-cell *matHeaderCellDef> ID</th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="wish-column">
+        <th mat-header-cell *matHeaderCellDef> Wensen</th>
+        <td class="tableTextPadding" mat-cell *matCellDef="let element"> {{element.wish}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="corpId-column">
+        <th mat-header-cell *matHeaderCellDef> CorpId</th>
+        <td mat-cell *matCellDef="let element"> {{element.corpId}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="delete-column">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element" id="{{element.id}}">
+          <button id="deleteButton" (click)="deleteById(element.id)" mat-button color="primary">Verwijderen</button>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="edit-column">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element" id="{{element.id}}">
+          <button id="editButton" (click)="fillEdit(element)" mat-button color="primary">Aanpassen</button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+      <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+    </table>
+  </div>
+  <div class="grid-6 form-block">
+
+    <mat-form-field class="inputForm" appearance="fill" style="display: none">
+      <mat-label>ID</mat-label>
+      <input matInput [(ngModel)]="WishModel.id" #formId>
+    </mat-form-field>
+    <mat-form-field class="inputForm topInput" appearance="fill">
+      <mat-label>Beschrijf wat voor opdracht je wil doen</mat-label>
+      <input matInput [(ngModel)]="WishModel.wish" #formWish>
+    </mat-form-field>
+    <mat-form-field class="inputForm" appearance="fill" style="display:none;">
+      <mat-label>Corp ID</mat-label>
+      <input matInput [(ngModel)]="WishModel.corpId" #formCorpId>
+    </mat-form-field>
+
+    <button id="save-button" mat-button color="primary" aria-label="" (click)="postWish()">
+      Opslaan
+    </button>
+  </div>
+</div>
+
+
+
