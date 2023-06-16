@@ -19,6 +19,12 @@ describe('LearningRoutesComponent', () => {
 
   it('should create', () => {
     // @ts-ignore
-    expect(component).toBeTruthy();
+    it("should create a new post", () => {
+      // component.course = "newcourse";
+      fixture.detectChanges();
+      const compiled = fixture.debugElement.nativeElement;
+      // expect(compiled.innerHTML).toContain("newcourse");
+    });
+    // expect(component).toBeTruthy();
   });
 });

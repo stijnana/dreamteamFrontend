@@ -23,6 +23,7 @@ import { LearningroutesControlComponent } from './learningroutes-control/learnin
 import { LearningroutesComponent } from './learningroutes/learningroutes.component';
 import {MatSortModule} from "@angular/material/sort";
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import { CourseDetailsComponent } from './course-details/course-details.component';
 
 
 
@@ -35,6 +36,7 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     CategoriesComponent,
     LearningroutesControlComponent,
     LearningroutesComponent,
+    CourseDetailsComponent,
   ],
   imports: [
     BrowserModule,

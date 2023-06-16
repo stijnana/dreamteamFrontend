@@ -42,9 +42,12 @@ button {
 section {
   display: table;
 }
-
+.headerTitle{
+  padding-left: 20px;
+}
 .grid-6{
   border-radius: 10px;
+  background: white;
   display: grid;
   width: inherit;
   margin: 10px;
@@ -61,7 +64,7 @@ section {
 
 table {
   width: -webkit-fill-available;
-  border-radius: 10px;
+  /*border-radius: 10px;*/
   padding: 10px;
 }
 
@@ -86,3 +89,64 @@ table {
   padding: 10px;
 }
 
+#Name{
+  width: 70%;
+}
+
+#location{
+  width: 15%;
+}
+
+#duration{
+  width: 15%;
+}
+
+/*.container2{*/
+/*  background: white;*/
+/*  border-radius: 10px;*/
+/*  padding: 20px;*/
+/*}*/
+.container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: stretch;
+
+}
+
+.grid-6{
+  background: white;
+  margin: 10px;
+  border-radius: 10px;
+  padding: 20px;
+  flex: 1 0 calc(50% - 80px);
+  max-width: calc(50% - 80px);
+}
+.stretch{
+  align-self: stretch;
+}
+
+.deletebutton{
+  background: #E30021;
+  color: white;
+}
+.hidden{
+  display: none;
+}
+
+.read-more-button{
+  background: #0070ad;
+  color: white;
+}
+
+.read-more-div{
+  margin-left: auto;
+  margin-bottom: auto;
+}
+
+.fullwidth{
+  width: -webkit-fill-available;
+}
+
+mat-toolbar{
+  background: white;
+}

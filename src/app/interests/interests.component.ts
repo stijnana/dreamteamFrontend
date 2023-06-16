@@ -5,6 +5,8 @@ import {InterestService} from "../service/interest.service";
 import {CategoryService} from "../service/category.service";
 import {CategoryModel} from "../model/category.model";
 import {GlobalComponent} from "../global-component";
+import {ConfirmDialogComponent, ConfirmDialogModel} from "../shared/confirm-dialog/confirm-dialog.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-interests',
@@ -19,14 +21,13 @@ import {GlobalComponent} from "../global-component";
 
 export class InterestsComponent implements OnInit {
   columnsToDisplay = ['interest-column', 'category-column', 'edit-column', 'delete-column'];
-
+  result: string = '';
   interests: InterestModel[];
   categories: CategoryModel[];
 
-  constructor(public InterestService: InterestService, public CategoryService: CategoryService) {
+  constructor(public InterestService: InterestService, public CategoryService: CategoryService, public dialog: MatDialog) {
 
   }
-
 
 
   InterestModel = new InterestModel()
@@ -50,7 +51,7 @@ export class InterestsComponent implements OnInit {
     this.InterestModel.category = edit.category;
   }
 
-  getCategories(){
+  getCategories() {
     this.CategoryService.getCategories()
       .subscribe(data => {
         console.log(data)
@@ -72,7 +73,7 @@ export class InterestsComponent implements OnInit {
 
   postInterest() {
     if (this.InterestModel.id == null) {
-      this.InterestModel.id = Math.floor(999999999 + Math.random() * 999999999999999)
+      this.InterestModel.id = Math.floor(100000 + Math.random() * 900000)
     }
     this.InterestModel.corpId = GlobalComponent.CorpId;
 
@@ -82,15 +83,29 @@ export class InterestsComponent implements OnInit {
         this.refreshInterest();
       })
     this.resetInterest();
-
   }
 
-  deleteById(id: number) {
+  deleteById(id: any) {
     this.InterestService.deleteById({id: id})
       .subscribe(data => {
         console.log(data)
         this.refreshInterest();
       })
+  }
+  confirmDialog(id?: number)  {
+    const message = `Weet je het zeker dat je het wil verwijderen?`;
+
+    const dialogData = new ConfirmDialogModel("Bevestig verwijderen", message);
+
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      maxWidth: "400px",
+      data: dialogData
+    });
+
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      this.result = dialogResult;
+      if (this.result) this.deleteById(id);
+    });
   }
 }
 

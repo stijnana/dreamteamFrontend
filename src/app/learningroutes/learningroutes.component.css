@@ -1,0 +1,58 @@
+#Name{
+  width: 70%;
+}
+
+#location{
+  width: 15%;
+}
+
+#duration{
+  width: 15%;
+}
+
+
+
+.infoContainer{
+  align-items: baseline;
+}
+
+.hidden{
+  display: none;
+}
+
+.temp{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.read-more-button{
+  background: #0070ad;
+  color: white;
+}
+
+.read-more-div{
+  margin-left: auto;
+  margin-bottom: auto;
+}
+
+.container{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.grid-6{
+  background: white;
+  margin: 10px;
+  border-radius: 10px;
+  padding: 20px;
+  flex: 1 0 calc(50% - 80px);
+  max-width: calc(50% - 80px);
+  align-self: stretch;
+
+}
+
+mat-toolbar{
+  background: white;
+}

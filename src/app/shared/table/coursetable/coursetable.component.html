@@ -1,20 +1,19 @@
-<!--<table mat-table [dataSource]="">-->
-
+<!--<table class="{{item.id}}" mat-table [dataSource]="item.courses" *ngIf="item.courses[item.length]">-->
 <!--  <ng-container matColumnDef="name">-->
-<!--    <th mat-header-cell *matHeaderCellDef>Naam</th>-->
-<!--    <td mat-cell *matCellDef="let course">{{data.name}}</td>-->
+<!--    <th mat-header-cell id="Name" *matHeaderCellDef>Naam</th>-->
+<!--    <td mat-cell *matCellDef="let course">{{course.name}}</td>-->
 <!--  </ng-container>-->
 
 
 <!--  <ng-container matColumnDef="location">-->
-<!--    <th mat-header-cell *matHeaderCellDef>Locatie</th>-->
-<!--    <td mat-cell *matCellDef="let course"> {{data.location}} </td>-->
+<!--    <th mat-header-cell id="location" *matHeaderCellDef>Locatie</th>-->
+<!--    <td mat-cell *matCellDef="let course"> {{course.location}} </td>-->
 <!--  </ng-container>-->
 
 
-<!--  <ng-container matColumnDef="description">-->
-<!--    <th mat-header-cell *matHeaderCellDef>Omschrijving</th>-->
-<!--    <td mat-cell *matCellDef="let course"> {{data.duration}} </td>-->
+<!--  <ng-container matColumnDef="duration">-->
+<!--    <th mat-header-cell *matHeaderCellDef>Duratie</th>-->
+<!--    <td mat-cell *matCellDef="let course"> {{course.duration}} </td>-->
 <!--  </ng-container>-->
 
 <!--  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>-->

@@ -1,5 +1,6 @@
 describe('Dreamteam', () => {
   it('', () => {
+    cy.viewport(1280, 720);
     // Visit the specified URL
     cy.visit('http://localhost:4200/');
     // Click on the 'leerplan' span
@@ -7,7 +8,7 @@ describe('Dreamteam', () => {
     // Click on the 'courses' span
     cy.get('span.courses').click();
     // Verify that 'Mijn Intresses' is visible
-    cy.get('#filterOnIntrest').contains('Mijn Intresses').should('be.visible');
+    cy.get('#filterOnIntrest').contains('Mijn Interesses').should('be.visible');
     // Verify that 'Reset filters' is visible
     cy.get('#resetFilers').contains('Reset filters').should('be.visible');
     // Verify that 'Categorie' is visible

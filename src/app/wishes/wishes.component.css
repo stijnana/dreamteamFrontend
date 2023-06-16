@@ -37,11 +37,17 @@ section {
   display: table;
 }
 
+.headerTitle{
+  padding-left: 20px;
+}
+
 .grid-6{
+  border-radius: 10px;
   display: grid;
   width: inherit;
   margin: 10px;
-  border-radius: 10px;
+  padding: 10px;
+  background: white;
 }
 
 .add-button{
@@ -62,8 +68,7 @@ section {
 
 table {
   width: -webkit-fill-available;
-  border-radius: 10px;
-  padding: 10px;
+
 }
 
 .inputForm{

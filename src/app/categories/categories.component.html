@@ -1,5 +1,7 @@
 <div class="container">
   <div class="grid-6">
+    <h1 class="headerTitle">Alle categorieën</h1>
+
     <table mat-table [dataSource]="categories">
       <ng-container matColumnDef="id-column">
         <th mat-header-cell *matHeaderCellDef> ID</th>
@@ -7,7 +9,7 @@
       </ng-container>
 
       <ng-container matColumnDef="category-column">
-        <th mat-header-cell *matHeaderCellDef> Wensen</th>
+        <th mat-header-cell *matHeaderCellDef> categorieën</th>
         <td class="tableTextPadding" mat-cell *matCellDef="let element"> {{element.category}} </td>
       </ng-container>
 
@@ -17,13 +19,12 @@
           <button id="deleteButton" (click)="deleteById(element.id)" mat-button>Verwijderen</button>
         </td>
       </ng-container>
-
       <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
       <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
     </table>
   </div>
   <div class="grid-6 form-block">
-
+    <h1 class="headerTitle">Voeg een categorie toe</h1>
     <mat-form-field class="inputForm" appearance="fill" style="display: none">
       <mat-label>ID</mat-label>
       <input matInput [(ngModel)]="CategoryModel.id" #formId>

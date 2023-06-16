@@ -17,6 +17,8 @@ import { ReadMoreCardComponent } from './read-more-card/read-more-card.component
 import {MatCardModule} from "@angular/material/card";
 import { CoursetableComponent } from './table/coursetable/coursetable.component';
 import {MatTableModule} from "@angular/material/table";
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 
@@ -25,7 +27,8 @@ import {MatTableModule} from "@angular/material/table";
     FooterComponent,
     HeaderComponent,
     ReadMoreCardComponent,
-    CoursetableComponent
+    CoursetableComponent,
+    ConfirmDialogComponent
   ],
   exports: [
     HeaderComponent,
@@ -48,7 +51,8 @@ import {MatTableModule} from "@angular/material/table";
         MatListModule,
         MatExpansionModule,
         MatCardModule,
-        MatTableModule
+        MatTableModule,
+        MatDialogModule
     ]
 })
 export class SharedModule { }

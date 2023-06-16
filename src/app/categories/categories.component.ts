@@ -51,7 +51,7 @@ export class CategoriesComponent implements OnInit{
     this.refreshCategory();
   }
 
-  deleteById(id: number) {
+  deleteById(id: any) {
     this.CategoryService.deleteById({id: id})
       .subscribe(data => {
         console.log(data)

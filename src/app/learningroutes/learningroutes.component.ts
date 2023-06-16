@@ -1,9 +1,6 @@
-import {AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {CourseModel} from "../model/course.model";
-import {MatTableDataSource} from "@angular/material/table";
-import {SelectionModel} from "@angular/cdk/collections";
 import {LiveAnnouncer} from "@angular/cdk/a11y";
-import {MatSort, Sort} from "@angular/material/sort";
 import {LearningRouteModel} from "../model/learningRoute.model";
 import {CourseService} from "../service/course.service";
 import {LearningRouteService} from "../service/learningRoute.service";
@@ -15,7 +12,7 @@ import {LearningRouteService} from "../service/learningRoute.service";
   styleUrls: ['./learningroutes.component.css']
 })
 export class LearningroutesComponent implements AfterViewInit, OnInit {
-  columnsToDisplay = ['name', 'description', 'location'];
+  columnsToDisplay = ['name', 'duration', 'location'];
   LearningRoutes: LearningRouteModel[];
   courses: any = {}
 
@@ -25,11 +22,6 @@ export class LearningroutesComponent implements AfterViewInit, OnInit {
     public LearningRouteService: LearningRouteService,
     private changeDetection: ChangeDetectorRef
   ) {
-  }
-
-  calcLength(length: number) {
-    console.log(length -1)
-    return length -1;
   }
 
   ngOnInit() {
@@ -42,19 +34,23 @@ export class LearningroutesComponent implements AfterViewInit, OnInit {
   }
 
 
+
   refreshLearningRoute() {
     this.LearningRouteService.getLearningRoutes().subscribe(data => {
       this.LearningRoutes = data.map(learningRoute => new LearningRouteModel(learningRoute));
       this.LearningRoutes.forEach(route => {
         route.courses = [];
         route.courses_id.forEach(courseId => {
+          console.log(courseId)
           this.CourseService.getCoursesById(courseId).subscribe(course => {
+            console.log(course)
             route.courses.push(new CourseModel(course));
           });
+
         });
       });
       this.changeDetection.detectChanges();
-      console.log(this.LearningRoutes)
+      // console.log(this.LearningRoutes)
     });
   }
 }

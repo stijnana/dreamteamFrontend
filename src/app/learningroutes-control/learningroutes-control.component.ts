@@ -7,6 +7,8 @@ import {MatTableDataSource} from "@angular/material/table";
 import {LiveAnnouncer} from "@angular/cdk/a11y";
 import {MatSort, Sort} from "@angular/material/sort";
 import {SelectionModel} from "@angular/cdk/collections";
+import {ConfirmDialogComponent, ConfirmDialogModel} from "../shared/confirm-dialog/confirm-dialog.component";
+import {MatDialog} from "@angular/material/dialog";
 
 
 @Component({
@@ -15,20 +17,22 @@ import {SelectionModel} from "@angular/cdk/collections";
   styleUrls: ['./learningroutes-control.component.css']
 })
 export class LearningroutesControlComponent implements OnInit, AfterViewInit {
-  courses: CourseModel[];
   columnsToDisplay = ['select', 'name', 'category'];
+  columnsToDisplay2 = ['name', 'duration', 'location'];
   dataSource: MatTableDataSource<CourseModel>;
   selection = new SelectionModel<CourseModel>(true, []);
   LearningRouteModel = new LearningRouteModel
   LearningRoutes: LearningRouteModel[]
   tempStoreArray: any = []
+  courses: any = {}
 
-
-  constructor(public CourseService: CourseService,
-              private _liveAnnouncer: LiveAnnouncer,
-              public LearningRouteService: LearningRouteService,
-              private changeDetection: ChangeDetectorRef
-              ) {
+  constructor(
+    public CourseService: CourseService,
+    private _liveAnnouncer: LiveAnnouncer,
+    public LearningRouteService: LearningRouteService,
+    private changeDetection: ChangeDetectorRef,
+    public dialog: MatDialog
+  ) {
   }
 
 
@@ -42,7 +46,12 @@ export class LearningroutesControlComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
 
   }
-
+  deleteLearningRoute(id: any) {
+    this.LearningRouteService.deleteById({id: id})
+      .subscribe(data => {
+        this.refreshLearningRoute();
+      })
+  }
 
   announceSortChange(sortState: Sort) {
     if (sortState.direction) {
@@ -74,7 +83,7 @@ export class LearningroutesControlComponent implements OnInit, AfterViewInit {
         });
       });
       this.changeDetection.detectChanges();
-      console.log(this.LearningRoutes)
+      // console.log(this.LearningRoutes)
     });
   }
 
@@ -96,6 +105,10 @@ export class LearningroutesControlComponent implements OnInit, AfterViewInit {
     this.selection.select(...this.dataSource.data);
   }
 
+  resetLearningroute() {
+    this.LearningRouteModel = new LearningRouteModel();
+  }
+
   checkboxLabel(row?: CourseModel): string {
 
     if (!row) {
@@ -106,23 +119,38 @@ export class LearningroutesControlComponent implements OnInit, AfterViewInit {
 
   postLearningRoute() {
     if (this.LearningRouteModel.id == null) {
-      this.LearningRouteModel.id = Math.floor(999999999 + Math.random() * 999999999999999)
+      this.LearningRouteModel.id = Math.floor(100000 + Math.random() * 900000)
     }
-    let coursesArray: number[] = []
+    let coursesArray: any[] = []
     this.selection.selected.forEach(courses => {
       coursesArray.push(courses.id)
     });
-
-
 
     this.LearningRouteModel.courses_id = coursesArray;
     this.LearningRouteModel.length = coursesArray.length - 1;
     this.LearningRouteService.postLearningRoutes(this.LearningRouteModel)
       .subscribe(data => {
-        // console.log(data)
-        this.refreshCourse();
         coursesArray = [];
+        this.refreshLearningRoute();
+        this.resetLearningroute();
+        this.selection.clear();
       })
+  }
 
+  result: string = '';
+  confirmDialog(id?: number)  {
+    const message = `Weet je het zeker dat je het wil verwijderen?`;
+
+    const dialogData = new ConfirmDialogModel("Bevestig verwijderen", message);
+
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      maxWidth: "400px",
+      data: dialogData
+    });
+
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      this.result = dialogResult;
+      if (this.result) this.deleteLearningRoute(id);
+    });
   }
 }
